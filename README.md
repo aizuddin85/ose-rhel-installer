@@ -79,6 +79,14 @@ ansible-playbook -i advanced-ose-rhel.yml /usr/share/ansible/openshift-ansible/p
 ```
 
 
+Once the installation completed you need to:  
+1. Generate the htpass
+```
+htpasswd -c /etc/origin/master/htpasswd userid
+```  
+
+2. Login via oc or console (https://ose-master.example.com:8443)
+
 
 
 

@@ -2,38 +2,25 @@
 masters
 nodes
 etcd
-
 # Set variables common for all OSEv3 hosts
 [OSEv3:vars]
 ansible_ssh_user=root
 deployment_type=openshift-enterprise
-containerized=true
 openshift_hosted_router_selector='region=infra'
-
 # uncomment the following to enable htpasswd authentication; defaults to DenyAllPasswordIdentityProvider
-openshift_master_identity_providers=[{'name': 'htpasswd_auth', 'login': 'true', 'challenge': 'true', 'kind': 'HTPasswdPasswordIdentityProvider', 'filename': '/etc/origin/master/htpasswd'}]
-
-enable_excluders=false
-
-#comment if no proxy needed.
-openshift_http_proxy=http://proxy.example.com:8080
-openshift_https_proxy=http://proxy.example.com:8080
-openshift_no_proxy='172.17.0.0/16,ose-master.example.com,docker-registry.default.svc.cluster.local'
-
-openshift_master_cluster_public_hostname=ose-master.example.com
-openshift_public_hostname=ose-master.example.com
-openshift_master_default_subdomain=oseapp.example.com
-
-
+openshift_master_identity_providers=[{'name': 'htpasswd_auth', 'login': 'true', 'challenge': 'true', 'kind': 'HTPasswdPasswordIdentityProvider', 'filename': '/etc/origin/maste
+r/htpasswd'}]
+openshift_master_cluster_public_hostname=master.devopshumans.com
+openshift_public_hostname=master.devopshumans.com
+openshift_master_default_subdomain=apps.devopshumans.com
+openshift_master_api_port=40443
+openshift_master_console_port=40443
 # host group for masters
 [masters]
-ose-master.example.com
-
+master.devopshumans.com
 #  host group for etcd
 [etcd]
-ose-master.linux.shell.com
-
+master.devopshumans.com
 # host group for nodes, includes region info
 [nodes]
-ose-master.linux.shell.com openshift_node_labels="{'region': 'infra', 'zone': 'default'}" openshift_schedulable=true
-
+master.devopshumans.com openshift_node_labels="{'region': 'infra', 'zone': 'default'}" openshift_schedulable=true

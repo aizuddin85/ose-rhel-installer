@@ -89,7 +89,10 @@ htpasswd -c /etc/origin/master/htpasswd userid
 
 
 
-
+## Uninstallation
+```
+ansible-playbook -i advance-ose-rhel.yml /usr/share/ansible/openshift-ansible/playbooks/adhocs/uninstall.yml -vv
+```
 
 
 

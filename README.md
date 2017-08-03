@@ -60,7 +60,7 @@ yum install docker
 
 7. Add insecure registry:
 ```
-OPTIONS='--selinux-enabled --insecure-registry 172.30.0.0/16'
+OPTIONS='--selinux-enabled --insecure-registry 172.0.0.0/8'
 ```
 
 
